@@ -103,6 +103,20 @@ Each message picks the one that fits, and her portrait glitches from one face to
 
 ![Her eight faces](docs/faces.png)
 
+### Focus mode
+
+A pomodoro she counts down for you. In her menu, **Focus mode**: 25 min / 5 min, 50 min / 10 min, or your own times
+(**Set my own times…**: focus, break, long break and how many rounds before it; she keeps them for next time).
+
+- **During a round**: the countdown sits over her head (`FOCUS 23:41 1/4`, red, with a bar filling up; `BREAK` in
+  green). She stays put and stays awake: no wandering, no possessing your windows, no gazing at the satellite. Claude
+  still gets through.
+- **The last ten seconds**: each second, huge, slams into the middle of the screen on an impact frame.
+- **When a round ends**: her finale all over the screen (impact flash, speed lines, shockwaves, light columns and
+  shards across the whole width, red lightning between them, a banner `ROUND 1/4 DONE`), her victory pose, and your break.
+- **When the break is over**: `BACK TO WORK`, and she comes to get you.
+- Pause, skip to the break, end the break or stop, from the same menu. Click her for the time left.
+
 She only catches the mouse on her actual body (pixel-precise): the rest of the screen works as usual.
 
 - **Click** her: she tells you where Claude is at.
@@ -111,7 +125,7 @@ She only catches the mouse on her actual body (pixel-precise): the rest of the s
 - **Ctrl+Alt+C**: she puts herself away (into her biochip, like in the show) and all that's left of her is her mask,
   eyes shut, in the bottom-left corner. Her eyes only open when Claude needs you. Click the mask (or Ctrl+Alt+C again)
   to bring her back.
-- **Her menu**: right-click her (it's also on her tray icon, next to the clock): teleport, look at the satellite, demo,
+- **Her menu**: right-click her (it's also on her tray icon, next to the clock): focus mode, teleport, look at the satellite, demo,
   how it works, size, sound, screen, wander, possess your windows, language, start with Windows, hooks.
 
 She speaks **French, English, Spanish, Brazilian Portuguese and Russian**, and picks the language of your system on her
@@ -291,12 +305,14 @@ tools/build-sprite.py    rebuilds the sprite from the original cut-out (Python +
 tools/build-cutins.py    cuts the cut-ins, her faces and her intro out of frames of the show
 src/main/                Electron: full-screen transparent click-through window, tray, local HTTP bridge
   windows.js / .ps1      where the other windows are (Windows only), so she can sit on them
+  focus.js               focus mode's clock: rounds, breaks, your own times
 src/renderer/js/
   sprite.js              WebGL shader: head tilt, mane flare, sitting, smears, afterimages, colors, glitch
   acting.js              the exposure sheets: every move, drawing by drawing
   capri.js               the character: stances, teleport, sitting, peeking, falling, drag, sleep
-  fx.js                  shards, light columns, bolts, glyphs, speed lines, shockwaves, the satellite and the red light, possessed windows, the cut-ins, her intro
-  panel.js               the "transmission" panel, her faces, and the ticker
+  fx.js                  shards, light columns, bolts, glyphs, speed lines, shockwaves, the satellite and the red light, possessed windows, the cut-ins, her intro, focus mode's countdown and banner
+  panel.js               the "transmission" panel, her faces, the ticker and the focus countdown
+  focus-times.js         the "Set my own times" window (focus-times.html)
   guide.js               her guide: the tutorials, going to things and pointing at them
   brain.js               turns Claude events into lines and actions
   lines.js               what she says (FR / EN / ES / PT / RU)

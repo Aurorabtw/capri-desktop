@@ -15,6 +15,7 @@ const DEFAULTS = {
   visible: true,
   welcomed: false,   // she has introduced herself (her welcome panel)
   linked: false,     // a Claude Code event has reached her at least once
+  focusCustom: { work: 30, rest: 5, long: 15, rounds: 4 }, // focus mode, your own times (minutes)
 };
 
 let cache = null;
